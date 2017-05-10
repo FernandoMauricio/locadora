@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title></title>
+</h:head>
+<h:body>
+
+<p:panelGrid columns="1" layout="grid">            
+		<p:graphicImage url="../img/banner.jpg" width="100%" height="100%" />
+</p:panelGrid>
+
+ <p:megaMenu orientation="#{megaMenuView.orientation}">
+  <p:submenu label="Sistema" icon="ui-icon-check" style="float:right">
+        <p:column>
+            <p:submenu label="Painel">
+                <p:menuitem value="Alterar senha" url="#" />
+                <p:menuitem value="Sair do sistema" url="#" />
+            </p:submenu>
+        </p:column>
+ 
+        <p:column>
+            <strong>Olá administrador.</strong>
+           <p:graphicImage url="../img/user.png" width="200px" />
+        </p:column>
+    </p:submenu>
+
+    <p:menuitem value="Cadastrar Veículos" url="carro.xhtml" icon="ui-icon-contact" />
+  	<p:menuitem value="Cadastrar Cliente" url="cliente.xhtml" icon="ui-icon-contact" />
+  	<p:menuitem value="Reservar Veículo" url="http://www.primefaces.org" icon="ui-icon-contact" />
+  	
+</p:megaMenu>
+
+
+
+
+</h:body>
+</html>

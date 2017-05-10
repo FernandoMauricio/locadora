@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Page</title>
+    <style>
+    .semBorda tr, .semBorda td {
+		border: none !important;
+	}
+    </style>
+    
+</h:head>
+<h:body>
+
+	<ui:include src="include/header.xhtml" />
+	
+	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
+		 <br />
+	    <h:form id="mainForm">
+	        <p:panel header="Cadastro de Veículos">
+	        	<p:messages />
+	        	
+	           <p:panelGrid columns="4" styleClass="semBorda">   
+	                    
+				 <p:outputLabel value="Fabricante: " for="fabricante" />
+		         <p:inputText  id="fabricante" size="50" value="#{carroMB.carro.fabricante}" />
+		                                 
+		         <p:outputLabel  value="Modelo:" for="modelo" />
+		         <p:inputText id="modelo" size="50" value="#{carroMB.carro.modelo}"  /> 
+		         
+		         <p:outputLabel  value="Cor:" for="cor" />
+		         <p:inputText id="cor" size="50" value="#{carroMB.carro.cor}" />
+		        		        
+		                   
+		         <p:outputLabel  value="Placa:" for="placa" />
+		         <p:inputText id="placa" size="50" value="#{carroMB.carro.placa}"  /> 
+		         
+		         <p:outputLabel value="Renavam:" for="ranavam" />
+		         <p:inputText id="ranavam" size="50" value="#{carroMB.carro.renavam}"  /> 
+		         
+		         
+		         
+					<p:commandButton value="Salvar" ajax="false" action="#{carroMB.salvar}">
+					</p:commandButton>
+		         
+			   
+			</p:panelGrid>
+	        </p:panel>
+	    </h:form>
+    </div>
+</h:body>
+</html>

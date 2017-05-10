@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Page</title>
+    <style>
+    .semBorda tr, .semBorda td {
+		border: none !important;
+	}
+    </style>
+    
+</h:head>
+<h:body>
+
+	<ui:include src="include/header.xhtml" />
+	
+	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
+		 <br />
+	    <h:form id="mainForm">
+	        <p:panel header="Cadastro de Clientes">
+	        	<p:messages />
+	        	
+	           <p:panelGrid columns="4" styleClass="semBorda">   
+	                    
+				 <p:outputLabel value="Nome: " for="nome" />
+		         <p:inputText  id="nome" size="50" value="#{clienteMB.cliente.nome}" />
+		                                 
+		         <p:outputLabel value="Email:" for="email" />
+		         <p:inputText  id="email" size="50" value="#{clienteMB.cliente.email}"  /> 
+		         
+		         <p:outputLabel  value="Cidade:" for="cidade" />
+		         <p:inputText  id="cidade" size="50" value="#{clienteMB.cliente.cidade}" />	
+		         
+		         
+		         <p:outputLabel  value="CNH:" for="cnh" />
+		         <p:inputText  id="cnh" size="50" value="#{clienteMB.cliente.cnh}" />
+		         
+		         <p:outputLabel  value="Endereco:" for="endereco" />
+		         <p:inputText  id="endereco" size="50" value="#{clienteMB.cliente.endereco}" />
+		        	
+		       	 <p:outputLabel  value="Bairro:" for="bairro" />
+		         <p:inputText  id="bairro" size="50" value="#{clienteMB.cliente.bairro}" />	  
+		         
+		         <p:outputLabel  value="Cpf:" for="cpf" />
+		         <p:inputMask id="cpf" value="#{clienteMB.cliente.cpf}" mask="999.999.99-99"
+                        size="13" />      
+		         
+		  
+		         <p:outputLabel  value="Residencial" for="telefone1" />
+		         <p:inputMask id="telefone1" value="#{clienteMB.cliente.telefone1}" mask="(99)9999-9999"
+                        size="15" />
+		         
+		         <p:outputLabel  value="Celular:" for="telefone2" />
+		          <p:inputMask id="telefone2" value="#{clienteMB.cliente.telefone2}" mask="(99)99999-9999"
+                        size="15" />	
+		         
+				 <p:commandButton value="Salvar" ajax="false" action="#{clienteMB.salvar}">
+				 </p:commandButton>
+		         
+			   
+			</p:panelGrid>
+	        </p:panel>
+	    </h:form>
+    </div>
+</h:body>
+</html>
