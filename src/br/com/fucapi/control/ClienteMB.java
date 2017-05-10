@@ -55,6 +55,10 @@ public class ClienteMB {
 		dao.excluir(cliente);
 		em.getTransaction().commit();
 		em.close();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage( null, new FacesMessage( "Registro foi excluído!!!"));
+		
 		carregarCliente();
 	}
 
@@ -73,7 +77,7 @@ public class ClienteMB {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
-		
+
 		cliente  = new Cliente();
 		carregarCliente();
 	}

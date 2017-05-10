@@ -11,6 +11,10 @@
     .semBorda tr, .semBorda td {
 		border: none !important;
 	}
+	.botao {
+	   height:40px;
+	   width: 80px;
+	}
     </style>
     
 </h:head>
@@ -20,11 +24,16 @@
 	
 	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
 		 <br />
-	    <h:form id="mainForm">
-	        <p:panel header="Cadastro de Clientes">
-	        	<p:messages />
-	        	
-	           <p:panelGrid columns="4" styleClass="semBorda">   
+	    <h:form id="cliente">
+	        <p:panel header="Clientes">
+	        
+	          <p:messages />
+	        <h:panelGrid columns="1" cellpadding="5">
+			    <p:commandButton value="Cadastrar cliente" type="button" onclick="PF('dlg1').show();" />
+			</h:panelGrid>
+			 
+			<p:dialog header="Cadastrar cliente" widgetVar="dlg1" minHeight="40">	
+	           <p:panelGrid columns="2" styleClass="semBorda">   
 	                    
 				 <p:outputLabel value="Nome: " for="nome" />
 		         <p:inputText  id="nome" size="50" value="#{clienteMB.cliente.nome}" />
@@ -60,9 +69,57 @@
 		         
 				 <p:commandButton value="Salvar" ajax="false" action="#{clienteMB.salvar}">
 				 </p:commandButton>
-		         
-			   
 			</p:panelGrid>
+			</p:dialog>
+			
+			
+			<h:form>
+			    <p:dataTable value="#{clienteMB.listaCliente}" var="cliente" rows="10"
+			                         paginator="true"
+			                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			                         rowsPerPageTemplate="5,10,15">
+			                         
+			        <p:column headerText="nome">
+			            <h:outputText value="#{cliente.nome}" />
+			        </p:column>
+			 
+			        <p:column headerText="cnh">
+			            <h:outputText value="#{cliente.cnh}" />
+			        </p:column>
+			 
+			        <p:column headerText="email">
+			            <h:outputText value="#{cliente.email}" />
+			        </p:column>
+			 
+			        <p:column headerText="Ações">
+			             <h:panelGrid columns="3" styleClass="semBorda">
+			             
+			        <h:column>
+						<h:commandLink action="#{produtoMB.excluir}" 
+									   value="Remover">
+							<f:ajax render="@form" />
+							<f:setPropertyActionListener 
+								target="#{produtoMB.produto}" 
+								value="#{produto}"/>
+						</h:commandLink>
+					</h:column>
+				<h:column>
+					<h:commandLink
+        					onclick="PF('dlg1').show();" value="Alterar">
+							<f:ajax render="@form :cliente" />
+							<f:setPropertyActionListener 
+								target="#{clienteMB.cliente}" 
+								value="#{cliente}"/>
+						</h:commandLink>
+				</h:column>
+						
+			
+						</h:panelGrid>
+			        </p:column>
+			        
+			    </p:dataTable>
+			</h:form>
+	        	
 	        </p:panel>
 	    </h:form>
     </div>
