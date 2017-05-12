@@ -95,12 +95,12 @@
 			             <h:panelGrid columns="3" styleClass="semBorda">
 			             
 			        <h:column>
-						<h:commandLink action="#{produtoMB.excluir}" 
+						<h:commandLink action="#{clienteMB.excluir}" 
 									   value="Remover">
 							<f:ajax render="@form" />
 							<f:setPropertyActionListener 
-								target="#{produtoMB.produto}" 
-								value="#{produto}"/>
+								target="#{clienteMB.cliente}" 
+								value="#{cliente}"/>
 						</h:commandLink>
 					</h:column>
 				<h:column>
