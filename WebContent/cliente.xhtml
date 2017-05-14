@@ -41,8 +41,12 @@
 		         <p:outputLabel value="Email:" for="email" />
 		         <p:inputText  id="email" size="50" value="#{clienteMB.cliente.email}"  /> 
 		         
+
 		         <p:outputLabel  value="Cidade:" for="cidade" />
-		         <p:inputText  id="cidade" size="50" value="#{clienteMB.cliente.cidade}" />	
+		         <p:inputText  id="cidade" size="10" value="#{clienteMB.cliente.cidade}" />	
+		         
+		         <p:outputLabel  value="UF:" for="uf" />
+		         <p:inputText  id="uf" size="10" value="#{clienteMB.cliente.uf}" />	
 		         
 		         
 		         <p:outputLabel  value="CNH:" for="cnh" />
@@ -54,17 +58,20 @@
 		       	 <p:outputLabel  value="Bairro:" for="bairro" />
 		         <p:inputText  id="bairro" size="50" value="#{clienteMB.cliente.bairro}" />	  
 		         
+		         <p:outputLabel  value="Cep:" for="cep" />
+		         <p:inputText  id="cep" size="50" value="#{clienteMB.cliente.cep}" />	 
+		         
 		         <p:outputLabel  value="Cpf:" for="cpf" />
 		         <p:inputMask id="cpf" value="#{clienteMB.cliente.cpf}" mask="999.999.99-99"
                         size="13" />      
 		         
 		  
-		         <p:outputLabel  value="Residencial" for="telefone1" />
-		         <p:inputMask id="telefone1" value="#{clienteMB.cliente.telefone1}" mask="(99)9999-9999"
+		         <p:outputLabel  value="Residencial" for="telresidencial" />
+		         <p:inputMask id="telresidencial" value="#{clienteMB.cliente.telresidencial}" mask="(99)9999-9999"
                         size="15" />
 		         
-		         <p:outputLabel  value="Celular:" for="telefone2" />
-		          <p:inputMask id="telefone2" value="#{clienteMB.cliente.telefone2}" mask="(99)99999-9999"
+		         <p:outputLabel  value="Celular:" for="telcelular" />
+		          <p:inputMask id="telcelular" value="#{clienteMB.cliente.telcelular}" mask="(99)99999-9999"
                         size="15" />	
 		         
 				 <p:commandButton value="Salvar" ajax="false" action="#{clienteMB.salvar}">

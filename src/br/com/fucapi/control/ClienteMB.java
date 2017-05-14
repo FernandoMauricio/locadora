@@ -16,8 +16,6 @@ import br.com.fucapi.util.JPAUtil;
 
 
 
-
-
 @ViewScoped
 @ManagedBean
 public class ClienteMB {

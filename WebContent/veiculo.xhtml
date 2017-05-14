@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Page</title>
+    <style>
+    .semBorda tr, .semBorda td {
+		border: none !important;
+	}
+	.botao {
+	   height:40px;
+	   width: 80px;
+	}
+    </style>
+    
+</h:head>
+<h:body>
+
+	<ui:include src="include/header.xhtml" />
+	
+	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
+		 <br />
+	    <h:form id="veiculo">
+	        <p:panel header="Veiculo">
+	        
+	          <p:messages />
+	        <h:panelGrid columns="1" cellpadding="5">
+			    <p:commandButton value="Cadastrar Veículo" type="button" onclick="PF('dlg1').show();" />
+			</h:panelGrid>
+			 
+			<p:dialog header="Cadastro de Veículos" widgetVar="dlg1" minHeight="40">	
+	           <p:panelGrid columns="2" styleClass="semBorda">   
+	                    
+				 <p:outputLabel value="Fabricante: " for="fabricante" />
+		         <p:inputText  id="fabricante" size="50" value="#{veiculoMB.veiculo.fabricante}" />
+		                                 
+		         <p:outputLabel value="Modelo:" for="modelo" />
+		         <p:inputText  id="modelo" size="50" value="#{veiculoMB.veiculo.modelo}"  /> 
+		         
+
+		         <p:outputLabel  value="Placa:" for="placa" />
+		         <p:inputText  id="placa" size="10" value="#{veiculoMB.veiculo.placa}" />	
+		         
+		         <p:outputLabel  value="Cor: " for="cor" />
+		         <p:inputText  id="cor" size="10" value="#{veiculoMB.veiculo.cor}" />	
+		         
+		         <p:outputLabel  value="Ano de fabricação:" for="anoFabricacao" />
+		         <p:inputText  id="anoFabricacao" size="10" value="#{veiculoMB.veiculo.anoFabricacao}" />	
+		         
+		         
+		         <p:outputLabel  value="Renavam:" for="renavam" />
+		         <p:inputText  id="renavam" size="50" value="#{veiculoMB.veiculo.renavam}" />
+		         
+		         
+		         <p:outputLabel  value="Imagem" for="imgVeiculo" />
+		         <p:inputText  id="imgVeiculo" size="50" value="#{veiculoMB.veiculo.imgVeiculo}" />
+		         
+		         <p:outputLabel  value="Situação do veículo" for="situacao_veiculo" />
+					<p:selectOneMenu id="situacao_veiculo" value="#{veiculoMB.veiculo.situacaoVeiculo}">
+					    <f:selectItem itemValue="" itemLabel="selecione aqui.." />
+					    <f:selectItem itemValue="1" itemLabel="Regular" />
+					    <f:selectItem itemValue="2" itemLabel="Restrição" />
+					</p:selectOneMenu>
+
+		         
+				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}">
+				 </p:commandButton>
+			</p:panelGrid>
+			</p:dialog>
+			
+			
+			<h:form>
+			    <p:dataTable value="#{veiculoMB.listaVeiculo}" var="veiculo" rows="10"
+			                         paginator="true"
+			                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			                         rowsPerPageTemplate="5,10,15">
+			                         
+			        <p:column headerText="fabricante">
+			            <h:outputText value="#{veiculo.fabricante}" />
+			        </p:column>
+			 
+			        <p:column headerText="Modelo">
+			            <h:outputText value="#{veiculo.modelo}" />
+			        </p:column>
+			 
+			        <p:column headerText="placa">
+			            <h:outputText value="#{veiculo.placa}" />
+			        </p:column>
+			 
+			        <p:column headerText="Ações">
+			             <h:panelGrid columns="3" styleClass="semBorda">
+			             
+			        <h:column>
+						<h:commandLink action="#{veiculoMB.excluir}" 
+									   value="Remover">
+							<f:ajax render="@form" />
+							<f:setPropertyActionListener 
+								target="#{veiculoMB.veiculo}" 
+								value="#{veiculo}"/>
+						</h:commandLink>
+					</h:column>
+				<h:column>
+					<h:commandLink
+        					onclick="PF('dlg1').show();" value="Alterar">
+							<f:ajax render="@form :veiculo" />
+							<f:setPropertyActionListener 
+								target="#{veiculoMB.veiculo}" 
+								value="#{veiculo}"/>
+						</h:commandLink>
+				</h:column>
+						
+			
+						</h:panelGrid>
+			        </p:column>
+			        
+			    </p:dataTable>
+			</h:form>
+	        	
+	        </p:panel>
+	    </h:form>
+    </div>
+</h:body>
+</html>

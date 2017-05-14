@@ -2,7 +2,6 @@ package br.com.fucapi.dao;
 
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import br.com.fucapi.entity.Cliente;
