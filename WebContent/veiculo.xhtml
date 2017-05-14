@@ -66,6 +66,15 @@
 					    <f:selectItem itemValue="2" itemLabel="Restrição" />
 					</p:selectOneMenu>
 					
+					
+				<p:outputLabel value="Situaca do Veículo" />
+					<p:selectOneMenu filter="true" value="#{veiculoMB.categoria}">
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione uma categoria" />
+						<f:selectItems value="#{categoriaMB.listaCategoria}" var="categoria"
+							converter="generic" itemValue="#{categoria.id}" itemLabel="#{categoria.descricao}" />
+					</p:selectOneMenu>
+
+						
 	
 		         
 				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}">

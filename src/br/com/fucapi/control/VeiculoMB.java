@@ -18,7 +18,7 @@ import br.com.fucapi.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
-public class VeiculoMB {
+public class VeiculoMB extends CategoriaMB{
 	
 	private Veiculo veiculo = new Veiculo();
 
@@ -30,7 +30,7 @@ public class VeiculoMB {
 		this.veiculo = veiculo;
 	}
 	
-public List<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
+	public List<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
 	
 	public List<Veiculo> getListaVeiculo() {
 		return listaVeiculo;
