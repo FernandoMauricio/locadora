@@ -68,10 +68,10 @@
 					
 					
 				<p:outputLabel value="Situaca do Veículo" />
-					<p:selectOneMenu filter="true" value="#{veiculoMB.categoria}">
+					<p:selectOneMenu filter="true" value="#{veiculoMB.categoria.id}">
 						<f:selectItem noSelectionOption="true" itemLabel="Selecione uma categoria" />
 						<f:selectItems value="#{categoriaMB.listaCategoria}" var="categoria"
-							converter="generic" itemValue="#{categoria.id}" itemLabel="#{categoria.descricao}" />
+							converter="generic" itemValue="#{categoria.id}" itemLabel="#{categoria.id}" />
 					</p:selectOneMenu>
 
 						

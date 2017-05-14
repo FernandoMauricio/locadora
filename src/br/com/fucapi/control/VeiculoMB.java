@@ -18,7 +18,7 @@ import br.com.fucapi.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
-public class VeiculoMB extends CategoriaMB{
+public class VeiculoMB{
 	
 	private Veiculo veiculo = new Veiculo();
 

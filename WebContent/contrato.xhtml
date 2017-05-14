@@ -34,7 +34,21 @@
 			 
 			<p:dialog header="Cadastrar Contrato" widgetVar="dlg1" minHeight="40">	
 	           <p:panelGrid columns="2" styleClass="semBorda">   
-	           
+	                    
+                    
+               <p:outputLabel value="Selecione o Cliente" />
+				<p:selectOneMenu filter="true" value="#{contratoMB.contrato.cliente}">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione um Clientre" />
+					<f:selectItems value="#{clienteMB.listaCliente}" var="cliente"
+						converter="generic" itemValue="#{cliente.id}" itemLabel="#{cliente.nome}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Selecione o Veículo" />
+				<p:selectOneMenu filter="true" value="#{contratoMB.contrato.veiculo}">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione um Clientre" />
+					<f:selectItems value="#{veiculoMB.listaVeiculo}" var="veiculo"
+						converter="generic" itemValue="#{veiculo.id}" itemLabel="#{veiculo.modelo}" />
+				</p:selectOneMenu>
 		                                 
 		         <p:outputLabel value="situacaoContrato:" for="situacaoContrato" />
 		         <p:inputText  id="situacaoContrato" size="50" value="#{contratoMB.contrato.situacaoContrato}"  /> 
