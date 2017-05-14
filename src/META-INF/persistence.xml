@@ -3,6 +3,8 @@
   
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.com.fucapi.entity.Cliente</class>
+     <class>br.com.fucapi.entity.Veiculo</class>
+     
      
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

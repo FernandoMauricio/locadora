@@ -29,11 +29,15 @@ private EntityManager entityManager;
 		return entityManager.getReference(Cliente.class, id);
 	}
 	
+	
 	public List<Cliente> listar(){
 		String jpql = "Select p from Cliente p order by nome";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+
+
 }
 	
 

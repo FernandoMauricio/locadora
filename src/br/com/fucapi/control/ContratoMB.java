@@ -1,73 +1,69 @@
 package br.com.fucapi.control;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import br.com.fucapi.dao.ClienteDAO;
-import br.com.fucapi.entity.Cliente;
+import br.com.fucapi.dao.ContratoDAO;
+import br.com.fucapi.entity.Contrato;
 import br.com.fucapi.util.JPAUtil;
-
-
 
 @ViewScoped
 @ManagedBean
-public class ClienteMB {
-
-	private Cliente cliente = new Cliente();
+public class ContratoMB {
 	
-	public Cliente getCliente() {
-		return cliente;
+private Contrato contrato = new Contrato();
+	
+	public Contrato getContrato() {
+		return contrato;
 	}
 	
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setContrato(Contrato contrato) {
+		this.contrato = contrato;
 	}
 	
 
-	public List<Cliente> listaCliente = new ArrayList<Cliente>();
+	public List<Contrato> listaContrato = new ArrayList<Contrato>();
 	
-	public List<Cliente> getListaCliente() {
-		return listaCliente;
+	public List<Contrato> getListaContrato() {
+		return listaContrato;
 	}	
 
 
 	@PostConstruct
-	public void carregarCliente(){
+	public void carregarContrato(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
-		listaCliente = dao.listar();
+		ContratoDAO dao = new ContratoDAO(em);
+		listaContrato = dao.listar();
 		em.close();
 	}
 	
 	public void excluir(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
+		ContratoDAO dao = new ContratoDAO(em);
 		em.getTransaction().begin();
-		dao.excluir(cliente);
+		dao.excluir(contrato);
 		em.getTransaction().commit();
 		em.close();
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage( null, new FacesMessage( "Registro foi excluído!!!"));
 		
-		carregarCliente();
+		carregarContrato();
 	}
 
 	public void salvar(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
+		ContratoDAO dao = new ContratoDAO(em);
 		em.getTransaction().begin();
-		cliente.setDataNascimento(Calendar.getInstance());
-		if(cliente.getId()!=null){
-			dao.alterar(cliente);
+		if(contrato.getNumContrato()!=null){
+			dao.alterar(contrato);
 		}else{
-			dao.cadastrar(cliente);
+			dao.cadastrar(contrato);
 		}
 		em.getTransaction().commit();
 		em.close();
@@ -75,7 +71,9 @@ public class ClienteMB {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
 
-		cliente  = new Cliente();
-		carregarCliente();
+		contrato  = new Contrato();
+		carregarContrato();
 	}
+	
+
 }

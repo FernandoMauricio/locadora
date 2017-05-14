@@ -1,6 +1,5 @@
 package br.com.fucapi.control;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,65 +8,63 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import br.com.fucapi.dao.ClienteDAO;
-import br.com.fucapi.entity.Cliente;
+
+import br.com.fucapi.dao.CategoriaDAO;
+import br.com.fucapi.entity.Categoria;
 import br.com.fucapi.util.JPAUtil;
-
-
 
 @ViewScoped
 @ManagedBean
-public class ClienteMB {
-
-	private Cliente cliente = new Cliente();
+public class CategoriaMB {
 	
-	public Cliente getCliente() {
-		return cliente;
+private Categoria categoria = new Categoria();
+	
+	public Categoria getCategoria() {
+		return categoria;
 	}
 	
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 
-	public List<Cliente> listaCliente = new ArrayList<Cliente>();
+	public List<Categoria> listaCategoria = new ArrayList<Categoria>();
 	
-	public List<Cliente> getListaCliente() {
-		return listaCliente;
+	public List<Categoria> getListaCategoria() {
+		return listaCategoria;
 	}	
 
 
 	@PostConstruct
-	public void carregarCliente(){
+	public void carregarCategoria(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
-		listaCliente = dao.listar();
+		CategoriaDAO dao = new CategoriaDAO(em);
+		listaCategoria = dao.listar();
 		em.close();
 	}
 	
 	public void excluir(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
+		CategoriaDAO dao = new CategoriaDAO(em);
 		em.getTransaction().begin();
-		dao.excluir(cliente);
+		dao.excluir(categoria);
 		em.getTransaction().commit();
 		em.close();
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage( null, new FacesMessage( "Registro foi excluído!!!"));
 		
-		carregarCliente();
+		carregarCategoria();
 	}
 
 	public void salvar(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ClienteDAO dao = new ClienteDAO(em);
+		CategoriaDAO dao = new CategoriaDAO(em);
 		em.getTransaction().begin();
-		cliente.setDataNascimento(Calendar.getInstance());
-		if(cliente.getId()!=null){
-			dao.alterar(cliente);
+		if(categoria.getId()!=null){
+			dao.alterar(categoria);
 		}else{
-			dao.cadastrar(cliente);
+			dao.cadastrar(categoria);
 		}
 		em.getTransaction().commit();
 		em.close();
@@ -75,7 +72,7 @@ public class ClienteMB {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
 
-		cliente  = new Cliente();
-		carregarCliente();
+		categoria  = new Categoria();
+		carregarCategoria();
 	}
 }
