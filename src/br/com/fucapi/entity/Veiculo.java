@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-/**
+/**Serializable, BaseEntity
  * The persistent class for the veiculos database table.
  * 
  */
@@ -125,4 +125,6 @@ public class Veiculo  implements Serializable {
 		this.categoria = categoria;
 	}
 
-}
+	
+
+	}

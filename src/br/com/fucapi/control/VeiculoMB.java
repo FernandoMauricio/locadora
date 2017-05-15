@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-
 import br.com.fucapi.dao.VeiculoDAO;
 import br.com.fucapi.entity.Veiculo;
 import br.com.fucapi.util.JPAUtil;
@@ -18,7 +17,7 @@ import br.com.fucapi.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
-public class VeiculoMB{
+public class VeiculoMB {
 	
 	private Veiculo veiculo = new Veiculo();
 
@@ -77,5 +76,6 @@ public class VeiculoMB{
 		veiculo  = new Veiculo();
 		carregarVeiculo();
 	}
+
 
 }

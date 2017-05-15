@@ -30,9 +30,9 @@ private EntityManager entityManager;
 	}
 	
 	public List<Veiculo> listar(){
-		String jpql = "Select p from Veiculo p order by fabricante";
+		String jpql = "Select p from Veiculo p  order by fabricante";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
-
+	
 }

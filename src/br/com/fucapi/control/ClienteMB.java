@@ -1,6 +1,5 @@
 package br.com.fucapi.control;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -63,7 +62,7 @@ public class ClienteMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		ClienteDAO dao = new ClienteDAO(em);
 		em.getTransaction().begin();
-		cliente.setDataNascimento(Calendar.getInstance());
+		
 		if(cliente.getId()!=null){
 			dao.alterar(cliente);
 		}else{

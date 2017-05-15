@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name="categorias")
 @NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
 public class Categoria implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

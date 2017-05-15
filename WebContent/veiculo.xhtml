@@ -68,14 +68,13 @@
 					
 					
 				<p:outputLabel value="Situaca do Veículo" />
-					<p:selectOneMenu filter="true" value="#{veiculoMB.categoria.id}">
+					<p:selectOneMenu filter="true" value="#{veiculoMB.veiculo.categoria}">
 						<f:selectItem noSelectionOption="true" itemLabel="Selecione uma categoria" />
 						<f:selectItems value="#{categoriaMB.listaCategoria}" var="categoria"
-							converter="generic" itemValue="#{categoria.id}" itemLabel="#{categoria.id}" />
+							converter="conversorObjeto"  itemValue="#{categoria.id}" itemLabel="#{categoria.descricao}" />
 					</p:selectOneMenu>
 
 						
-	
 		         
 				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}">
 				 </p:commandButton>
