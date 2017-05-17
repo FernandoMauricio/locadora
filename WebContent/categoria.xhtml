@@ -25,17 +25,13 @@
 	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
 		 <br />
 	    <h:form id="categoria">
-	        <p:panel header="categoria">
+	        <p:panel header="Cadastrar categoria">
 	        
 	          <p:messages />
-	        <h:panelGrid columns="1" cellpadding="5">
-			    <p:commandButton value="Cadastrar Categoria" type="button" onclick="PF('dlg1').show();" />
-			</h:panelGrid>
 			 
-			<p:dialog header="Cadastro de Veículos" widgetVar="dlg1" minHeight="40">	
-	           <p:panelGrid columns="2" styleClass="semBorda">   
+	           <p:panelGrid columns="3" styleClass="semBorda">   
 	                    
-				 <p:outputLabel value="Descricao:  " for="descricao" />
+				 <p:outputLabel value="Descrição  " for="descricao" />
 		         <p:inputText  id="descricao" size="50" value="#{categoriaMB.categoria.descricao}" />
 		                                 
 		         
@@ -43,16 +39,21 @@
 				 <p:commandButton value="Salvar" ajax="false" action="#{categoriaMB.salvar}">
 				 </p:commandButton>
 			</p:panelGrid>
-			</p:dialog>
 			
-			
+			<hr />
 			<h:form>
 			    <p:dataTable value="#{categoriaMB.listaCategoria}" var="categoria" rows="10"
 			                         paginator="true"
 			                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			                         rowsPerPageTemplate="5,10,15">
 			                         
-			        <p:column headerText="categoria">
+			       <p:column headerText="ID">
+			            <h:outputText value="#{categoria.id}" />
+			        </p:column>
+			                 
+			                         
+			                         
+			        <p:column headerText="Descrição">
 			            <h:outputText value="#{categoria.descricao}" />
 			        </p:column>
 			 
@@ -71,7 +72,7 @@
 					</h:column>
 				<h:column>
 					<h:commandLink
-        					onclick="PF('dlg1').show();" value="Alterar">
+        					 value="Alterar">
 							<f:ajax render="@form :categoria" />
 							<f:setPropertyActionListener 
 								target="#{categoriaMB.categoria}" 

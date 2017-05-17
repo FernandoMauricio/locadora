@@ -35,4 +35,10 @@ private EntityManager entityManager;
 		return query.getResultList();
 	}
 	
+	public List<Veiculo> listarAtivos(){
+		String jpql = "Select p from Veiculo p where situacaoVeiculo='Regular' order by fabricante";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
+	
 }

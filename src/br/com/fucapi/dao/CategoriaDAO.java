@@ -35,4 +35,5 @@ private EntityManager entityManager;
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+
 }

@@ -20,9 +20,6 @@ public class Contrato implements Serializable {
 	@Column(name="num_contrato")
 	private Long numContrato;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="data_contrato")
-	private Date dataContrato;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_devolucao")
@@ -32,15 +29,16 @@ public class Contrato implements Serializable {
 	@Column(name="data_retirada")
 	private Date dataRetirada;
 
-
 	@Column(name="situacao_contrato")
 	private String situacaoContrato;
+
+
+	@Column(name="quant_diaria")
+	private double quantDiaria;
 
 	@Column(name="valor_diaria")
 	private double valorDiaria;
 
-	@Column(name="valor_multas")
-	private double valorMultas;
 
 	@Column(name="valor_taxas")
 	private double valorTaxas;
@@ -61,15 +59,6 @@ public class Contrato implements Serializable {
 	public Contrato() {
 	}
 
-
-
-	public Date getDataContrato() {
-		return this.dataContrato;
-	}
-
-	public void setDataContrato(Date dataContrato) {
-		this.dataContrato = dataContrato;
-	}
 
 	public Date getDataDevolucao() {
 		return this.dataDevolucao;
@@ -104,13 +93,6 @@ public class Contrato implements Serializable {
 		this.valorDiaria = valorDiaria;
 	}
 
-	public double getValorMultas() {
-		return this.valorMultas;
-	}
-
-	public void setValorMultas(double valorMultas) {
-		this.valorMultas = valorMultas;
-	}
 
 	public double getValorTaxas() {
 		return this.valorTaxas;
@@ -155,6 +137,17 @@ public class Contrato implements Serializable {
 	public void setNumContrato(Long numContrato) {
 		this.numContrato = numContrato;
 	}
+	
+	
+	public double getQuantDiaria() {
+		return quantDiaria;
+	}
+
+
+	public void setQuantDiaria(double quantDiaria) {
+		this.quantDiaria = quantDiaria;
+	}
+
 
 
 

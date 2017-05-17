@@ -28,10 +28,16 @@
            <p:graphicImage url="../img/user.png" width="200px" />
         </p:column>
     </p:submenu>
-    
-    <p:menuitem value="Cadastrar Cliente" url="cliente.xhtml" icon="ui-icon-contact" />
-  	<p:menuitem value="Cadastrar Veículo" url="veiculo.xhtml" icon="ui-icon-contact" />
-  	<p:menuitem value="Reservar Veículo" url="contrato.xthml" icon="ui-icon-contact" />
+     <p:submenu label="Cadastro Cliente e Categoria" icon="ui-icon-contact">
+        <p:column>
+            <p:submenu label="Selecione...">
+                 <p:menuitem value="Cadastrar Cliente" url="cliente.xhtml" icon="ui-icon-pencil" />
+                  <p:menuitem value="Cadastrar Categoria" url="categoria.xhtml" icon="ui-icon-pencil" />
+            </p:submenu>
+        </p:column>    
+    </p:submenu>
+  	<p:menuitem value="Cadastro Veículo" url="veiculo.xhtml" icon="ui-icon-contact" />
+  	<p:menuitem value="Reservar Veículo" url="contrato.xhtml" icon="ui-icon-contact" />
   	<p:menuitem value="Relatórios" url="http://www.primefaces.org" icon="ui-icon-contact" />
 </p:megaMenu>
 

@@ -48,6 +48,7 @@ public class Veiculo  implements Serializable {
 
 	//bi-directional many-to-one association to Categoria
 	@ManyToOne
+	@JoinColumn(name="cat_id")
 	private Categoria categoria;
 
 	public Veiculo() {
@@ -124,7 +125,16 @@ public class Veiculo  implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	public String getObs() {
+		return obs;
+	}
 
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
+	@Column(columnDefinition="TEXT")
+	private String obs;
 	
 
 	}

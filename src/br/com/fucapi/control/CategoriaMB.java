@@ -63,14 +63,16 @@ private Categoria categoria = new Categoria();
 		em.getTransaction().begin();
 		if(categoria.getId()!=null){
 			dao.alterar(categoria);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage( null, new FacesMessage( "Cadastro foi alterado!!!"));
 		}else{
 			dao.cadastrar(categoria);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
 		}
 		em.getTransaction().commit();
 		em.close();
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
+	
 
 		categoria  = new Categoria();
 		carregarCategoria();

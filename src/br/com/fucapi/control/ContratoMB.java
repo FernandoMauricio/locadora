@@ -8,8 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+
+import br.com.fucapi.dao.ClienteDAO;
 import br.com.fucapi.dao.ContratoDAO;
+import br.com.fucapi.dao.VeiculoDAO;
+import br.com.fucapi.entity.Cliente;
 import br.com.fucapi.entity.Contrato;
+import br.com.fucapi.entity.Veiculo;
 import br.com.fucapi.util.JPAUtil;
 
 @ViewScoped
@@ -17,7 +22,27 @@ import br.com.fucapi.util.JPAUtil;
 public class ContratoMB {
 	
 private Contrato contrato = new Contrato();
+
+	private Long cliID;
+	private Long veiID;
+
 	
+		public Long getCliID() {
+		return cliID;
+	}
+	
+	public void setCliID(Long cliID) {
+		this.cliID = cliID;
+	}
+	
+	public Long getVeiID() {
+		return veiID;
+	}
+	
+	public void setVeiID(Long veiID) {
+		this.veiID = veiID;
+	}
+
 	public Contrato getContrato() {
 		return contrato;
 	}
@@ -60,6 +85,16 @@ private Contrato contrato = new Contrato();
 		EntityManager em = JPAUtil.getEntityManager();
 		ContratoDAO dao = new ContratoDAO(em);
 		em.getTransaction().begin();
+		
+		ClienteDAO clidao = new ClienteDAO(em);
+		Cliente cliente = clidao.consultar(cliID);
+		contrato.setCliente(cliente);
+		
+		VeiculoDAO veidao = new VeiculoDAO(em);
+		Veiculo veiculo = veidao.consultar(veiID);
+		contrato.setVeiculo(veiculo);
+		
+		
 		if(contrato.getNumContrato()!=null){
 			dao.alterar(contrato);
 		}else{

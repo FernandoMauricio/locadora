@@ -25,15 +25,11 @@
 	<div class="containerContent" style="width: 1300px; position: absolute; left: 5%;">
 		 <br />
 	    <h:form id="cliente">
-	        <p:panel header="Clientes">
+	        <p:panel header="Cadastro de Clientes">
 	        
 	          <p:messages />
-	        <h:panelGrid columns="1" cellpadding="5">
-			    <p:commandButton value="Cadastrar cliente" type="button" onclick="PF('dlg1').show();" />
-			</h:panelGrid>
-			 
-			<p:dialog header="Cadastrar cliente" widgetVar="dlg1" minHeight="40">	
-	           <p:panelGrid columns="2" styleClass="semBorda">         
+
+	           <p:panelGrid columns="4" styleClass="semBorda">         
 	
 				 <p:outputLabel value="Nome: " for="nome" />
 		         <p:inputText  id="nome" size="50" value="#{clienteMB.cliente.nome}" />
@@ -41,13 +37,20 @@
 		         <p:outputLabel value="Email:" for="email" />
 		         <p:inputText  id="email" size="50" value="#{clienteMB.cliente.email}"  /> 
 		         
+		        <p:outputLabel value="Data de nascimento" for="dataNascimento" />
+				<p:calendar id="dataNascimento" size="12" pattern="dd/MM/yyyy" mask="99/99/9999" 
+					value="#{clienteMB.cliente.dataNascimento}" />
+		                 
 
 		         <p:outputLabel  value="Cidade:" for="cidade" />
 		         <p:inputText  id="cidade" size="10" value="#{clienteMB.cliente.cidade}" />	
 		         
-		         <p:outputLabel  value="UF:" for="uf" />
-		         <p:inputText  id="uf" size="10" value="#{clienteMB.cliente.uf}" />	
-		         
+		        <p:outputLabel value="UF" />
+				<p:selectOneMenu value = "#{clienteMB.cliente.uf}"> 
+				   <f:selectItem itemValue = "AM" itemLabel = "AM" /> 
+				   <f:selectItem itemValue = "BA" itemLabel = "BA" /> 
+				</p:selectOneMenu> 
+				         
 		         
 		         <p:outputLabel  value="CNH:" for="cnh" />
 		         <p:inputText  id="cnh" size="50" value="#{clienteMB.cliente.cnh}" />
@@ -62,7 +65,7 @@
 		         <p:inputText  id="cep" size="50" value="#{clienteMB.cliente.cep}" />	 
 		         
 		         <p:outputLabel  value="Cpf:" for="cpf" />
-		         <p:inputMask id="cpf" value="#{clienteMB.cliente.cpf}" mask="999.999.99-99"
+		         <p:inputMask id="cpf" value="#{clienteMB.cliente.cpf}" mask="999.999.999-99"
                         size="13" />      
 		         
 		  
@@ -77,8 +80,8 @@
 				 <p:commandButton value="Salvar" ajax="false" action="#{clienteMB.salvar}">
 				 </p:commandButton>
 			</p:panelGrid>
-			</p:dialog>
-			
+
+			<hr />
 			
 			<h:form>
 			    <p:dataTable value="#{clienteMB.listaCliente}" var="cliente" rows="10"
@@ -112,7 +115,7 @@
 					</h:column>
 				<h:column>
 					<h:commandLink
-        					onclick="PF('dlg1').show();" value="Alterar">
+        					 value="Alterar">
 							<f:ajax render="@form :cliente" />
 							<f:setPropertyActionListener 
 								target="#{clienteMB.cliente}" 
@@ -120,15 +123,14 @@
 						</h:commandLink>
 				</h:column>
 						
-			
 						</h:panelGrid>
 			        </p:column>
-			        
 			    </p:dataTable>
 			</h:form>
 	        	
 	        </p:panel>
 	    </h:form>
+	    <BR />
     </div>
 </h:body>
 </html>

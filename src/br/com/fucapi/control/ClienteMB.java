@@ -65,14 +65,15 @@ public class ClienteMB {
 		
 		if(cliente.getId()!=null){
 			dao.alterar(cliente);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage( null, new FacesMessage( "Cadastro foi alterado!!!"));
 		}else{
 			dao.cadastrar(cliente);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
 		}
 		em.getTransaction().commit();
 		em.close();
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage( null, new FacesMessage( "Cadastro realizado com sucesso!!!"));
 
 		cliente  = new Cliente();
 		carregarCliente();

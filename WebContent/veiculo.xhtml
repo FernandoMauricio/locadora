@@ -28,12 +28,9 @@
 	        <p:panel header="Veiculo">
 	        
 	          <p:messages />
-	        <h:panelGrid columns="1" cellpadding="5">
-			    <p:commandButton value="Cadastrar Veículo" type="button" onclick="PF('dlg1').show();" />
-			</h:panelGrid>
+
 			 
-			<p:dialog header="Cadastro de Veículos" widgetVar="dlg1" minHeight="40">	
-	           <p:panelGrid columns="2" styleClass="semBorda">   
+	           <p:panelGrid columns="4" styleClass="semBorda">   
 	                    
 				 <p:outputLabel value="Fabricante: " for="fabricante" />
 		         <p:inputText  id="fabricante" size="50" value="#{veiculoMB.veiculo.fabricante}" />
@@ -54,33 +51,37 @@
 		         
 		         <p:outputLabel  value="Renavam:" for="renavam" />
 		         <p:inputText  id="renavam" size="50" value="#{veiculoMB.veiculo.renavam}" />
-		         
-		         
-		         <p:outputLabel  value="Imagem" for="imgVeiculo" />
-		         <p:inputText  id="imgVeiculo" size="50" value="#{veiculoMB.veiculo.imgVeiculo}" />
+
 		         
 		         <p:outputLabel  value="Situação do veículo" for="situacao_veiculo" />
 					<p:selectOneMenu id="situacao_veiculo" value="#{veiculoMB.veiculo.situacaoVeiculo}">
 					    <f:selectItem itemValue="" itemLabel="selecione aqui.." />
-					    <f:selectItem itemValue="1" itemLabel="Regular" />
-					    <f:selectItem itemValue="2" itemLabel="Restrição" />
+					    <f:selectItem itemValue="Regular" itemLabel="Regular" />
+					    <f:selectItem itemValue="Restrito" itemLabel="Restrição" />
 					</p:selectOneMenu>
 					
 					
-				<p:outputLabel value="Situaca do Veículo" />
-					<p:selectOneMenu filter="true" value="#{veiculoMB.veiculo.categoria}">
+				<p:outputLabel  value="Categoria" />
+					<p:selectOneMenu filter="true" value="#{veiculoMB.catID}">
 						<f:selectItem noSelectionOption="true" itemLabel="Selecione uma categoria" />
 						<f:selectItems value="#{categoriaMB.listaCategoria}" var="categoria"
-							converter="conversorObjeto"  itemValue="#{categoria.id}" itemLabel="#{categoria.descricao}" />
+							  itemValue="#{categoria.id}" itemLabel="#{categoria.descricao}" />
 					</p:selectOneMenu>
-
-						
+					
+				 <p:outputLabel  value="Observação" for="obs" />	
+				 <p:inputTextarea id="obs" value="#{veiculoMB.veiculo.obs}" 
+				 rows="10" cols="50" autoResize="false" /> 		
+ 			
+ 			<p:commandButton value="Visualizar"
+					action="#{veiculoRelatorioMB.getRelatorio()}" ajax="false"
+					onclick="this.form.target='_blank'" />
 		         
-				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}">
-				 </p:commandButton>
+				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}"/>
+				 
 			</p:panelGrid>
-			</p:dialog>
 			
+				<hr />
+				 <a href="Relatorio">Clique aqui para visualizar seu relatório</a>
 			
 			<h:form>
 			    <p:dataTable value="#{veiculoMB.listaVeiculo}" var="veiculo" rows="10"
@@ -88,16 +89,16 @@
 			                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			                         rowsPerPageTemplate="5,10,15">
 			                         
-			        <p:column headerText="fabricante">
-			            <h:outputText value="#{veiculo.fabricante}" />
-			        </p:column>
-			 
 			        <p:column headerText="Modelo">
 			            <h:outputText value="#{veiculo.modelo}" />
 			        </p:column>
 			 
-			        <p:column headerText="placa">
+			        <p:column headerText="Placa">
 			            <h:outputText value="#{veiculo.placa}" />
+			        </p:column>
+			 
+			        <p:column headerText="Situação do Veículo">
+			            <h:outputText value="#{veiculo.situacaoVeiculo}" />
 			        </p:column>
 			 
 			        <p:column headerText="Ações">
@@ -113,13 +114,16 @@
 						</h:commandLink>
 					</h:column>
 				<h:column>
+
 					<h:commandLink
-        					onclick="PF('dlg1').show();" value="Alterar">
+						 value="Alterar">
 							<f:ajax render="@form :veiculo" />
 							<f:setPropertyActionListener 
 								target="#{veiculoMB.veiculo}" 
 								value="#{veiculo}"/>
 						</h:commandLink>
+				
+
 				</h:column>
 						
 			
@@ -127,7 +131,7 @@
 			        </p:column>
 			        
 			    </p:dataTable>
-			</h:form>
+				</h:form>
 	        	
 	        </p:panel>
 	    </h:form>
