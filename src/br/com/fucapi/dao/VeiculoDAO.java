@@ -36,7 +36,7 @@ private EntityManager entityManager;
 	}
 	
 	public List<Veiculo> listarAtivos(){
-		String jpql = "Select p from Veiculo p where situacaoVeiculo='Regular' order by fabricante";
+		String jpql = "Select p from Veiculo p where situacaoveiculo='Regular' order by fabricante";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

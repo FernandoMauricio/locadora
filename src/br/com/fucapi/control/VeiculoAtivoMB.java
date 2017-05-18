@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
@@ -12,7 +13,8 @@ import br.com.fucapi.dao.VeiculoDAO;
 import br.com.fucapi.entity.Veiculo;
 import br.com.fucapi.util.JPAUtil;
 
-@ViewScoped
+
+@SessionScoped
 @ManagedBean
 public class VeiculoAtivoMB {
 	

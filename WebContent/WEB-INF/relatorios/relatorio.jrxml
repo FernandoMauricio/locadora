@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-05-17T13:15:02 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="veiculo-relatorio" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
+<!-- 2017-05-17T22:23:49 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
 	<property name="template.type" value="columnar"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value="bG9jYWRvcmEudmVpY3Vsb3MgLDE1LDE1LDJkZDU5ZjZiLTRjNGItNDliNS05MWY4LTE5MDAxYjI3&#xA;YzNjNzs="/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="bG9jYWRvcmEudmVpY3Vsb3MgLDE1LDE1LDNjMGZjNWU4LWZiNTEtNDZjMC1hNjE3LTc1OTQ3YmM2&#xA;N2UyNDs="/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
 	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
@@ -16,20 +16,20 @@
 		</conditionalStyle>
 	</style>
 	<queryString language="SQL">
-		<![CDATA[SELECT locadora.veiculos.situacao_veiculo,
+		<![CDATA[SELECT locadora.veiculos.modelo,
 	locadora.veiculos.obs,
-	locadora.veiculos.modelo,
-	locadora.veiculos.placa
+	locadora.veiculos.placa,
+	locadora.veiculos.situacaoveiculo
 FROM locadora.veiculos
 WHERE 
-	 locadora.veiculos.situacao_veiculo = 'Restrito']]>
+	 locadora.veiculos.situacaoveiculo = 'Restrito']]>
 	</queryString>
-	<field name="situacao_veiculo" class="java.lang.String"/>
 	<field name="modelo" class="java.lang.String"/>
 	<field name="placa" class="java.lang.String"/>
 	<field name="obs" class="java.lang.String"/>
+	<field name="situacaoveiculo" class="java.lang.String"/>
 	<group name="Group1">
-		<groupExpression><![CDATA[$F{situacao_veiculo}]]></groupExpression>
+		<groupExpression><![CDATA[$F{situacaoveiculo}]]></groupExpression>
 		<groupHeader>
 			<band height="31">
 				<frame>
@@ -39,7 +39,7 @@ WHERE
 						<textElement>
 							<font isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{situacao_veiculo}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{situacaoveiculo}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -58,19 +58,15 @@ WHERE
 				<textElement>
 					<font size="80" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Veículos em]]></text>
+				<text><![CDATA[Veículos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="SubTitle" x="336" y="103" width="217" height="29" uuid="eef58983-008d-4a5b-8e47-97f8d4670c7a"/>
 				<textElement>
 					<font size="22" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Manutenção]]></text>
+				<text><![CDATA[em manutenção]]></text>
 			</staticText>
-			<image>
-				<reportElement x="10" y="1" width="103" height="111" uuid="333e502a-b64b-4ab3-bba4-483e989f1750"/>
-				<imageExpression><![CDATA["WebContent/WEB-INF/relatorio/icon-maintenance-servicing.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -85,51 +81,47 @@ WHERE
 				<reportElement positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1" uuid="5e41185f-9c90-45ca-839b-e28b308c1430"/>
 			</line>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="79" y="0" width="132" height="20" forecolor="#000000" uuid="d8d6306e-3d52-4976-9446-7bb245073f98"/>
+				<reportElement style="Column header" positionType="Float" x="79" y="0" width="132" height="20" forecolor="#000000" uuid="5f94f1dc-1ce1-4fba-8bce-db0bc84a04ab"/>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[modelo]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="215" y="0" width="338" height="18" uuid="14c4f3bb-0dba-45db-ae8e-616b81edda6e"/>
+				<reportElement style="Detail" positionType="Float" x="215" y="0" width="338" height="18" uuid="11e6b9eb-5df0-42a4-bd4f-fb6583022cab"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="79" y="20" width="132" height="20" forecolor="#000000" uuid="0f25584e-f668-44fa-b997-deb363fc7954"/>
+				<reportElement style="Column header" positionType="Float" x="79" y="20" width="132" height="20" forecolor="#000000" uuid="711fc92c-fd26-4714-9eea-08a81eda76d8"/>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[placa]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="215" y="20" width="338" height="18" uuid="aa5a973e-4f9c-47aa-b7ca-b41314fdd004"/>
+				<reportElement style="Detail" positionType="Float" x="215" y="20" width="338" height="18" uuid="dc8a395f-9d75-4d8f-bb0a-7c0b4bf2a5ad"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="79" y="40" width="132" height="20" forecolor="#000000" uuid="bade4aa0-6766-47b5-bbfd-268002f86a15"/>
+				<reportElement style="Column header" positionType="Float" x="79" y="40" width="132" height="20" forecolor="#000000" uuid="60bafbbd-984c-4f7b-adc8-87268df698ba"/>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[obs]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="215" y="40" width="338" height="18" uuid="5da6d2a3-ab42-47e7-b890-cf8f33ee576c"/>
+				<reportElement style="Detail" positionType="Float" x="215" y="40" width="338" height="18" uuid="5fd9cb4b-1d72-46dd-a88f-56c152bfa3ba"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="8" y="15" width="71" height="65" uuid="3c908ab7-8b13-4a2c-bb02-e30753b1fce2"/>
-				<imageExpression><![CDATA["WebContent/WEB-INF/relatorio/car_service1600.png"]]></imageExpression>
-			</image>
 		</band>
 	</detail>
 	<columnFooter>

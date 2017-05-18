@@ -43,8 +43,16 @@ public class Veiculo  implements Serializable {
 
 	private String renavam;
 
-	@Column(name="situacao_veiculo")
-	private String situacaoVeiculo;
+
+	public String getSituacaoveiculo() {
+		return situacaoveiculo;
+	}
+
+	public void setSituacaoveiculo(String situacaoveiculo) {
+		this.situacaoveiculo = situacaoveiculo;
+	}
+
+	private String situacaoveiculo;
 
 	//bi-directional many-to-one association to Categoria
 	@ManyToOne
@@ -110,13 +118,6 @@ public class Veiculo  implements Serializable {
 		this.renavam = renavam;
 	}
 
-	public String getSituacaoVeiculo() {
-		return this.situacaoVeiculo;
-	}
-
-	public void setSituacaoVeiculo(String situacaoVeiculo) {
-		this.situacaoVeiculo = situacaoVeiculo;
-	}
 
 	public Categoria getCategoria() {
 		return this.categoria;

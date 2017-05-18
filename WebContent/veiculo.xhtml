@@ -29,7 +29,8 @@
 	        
 	          <p:messages />
 
-			 
+			 <p:commandButton action="#{demoBean.pdf()}"  ajax="false" value="Relatorio de Veículo Restrito"/>
+			 				 
 	           <p:panelGrid columns="4" styleClass="semBorda">   
 	                    
 				 <p:outputLabel value="Fabricante: " for="fabricante" />
@@ -53,8 +54,8 @@
 		         <p:inputText  id="renavam" size="50" value="#{veiculoMB.veiculo.renavam}" />
 
 		         
-		         <p:outputLabel  value="Situação do veículo" for="situacao_veiculo" />
-					<p:selectOneMenu id="situacao_veiculo" value="#{veiculoMB.veiculo.situacaoVeiculo}">
+		         <p:outputLabel  value="Situação do veículo" for="situacaoveiculo" />
+					<p:selectOneMenu id="situacaoveiculo" value="#{veiculoMB.veiculo.situacaoveiculo}">
 					    <f:selectItem itemValue="" itemLabel="selecione aqui.." />
 					    <f:selectItem itemValue="Regular" itemLabel="Regular" />
 					    <f:selectItem itemValue="Restrito" itemLabel="Restrição" />
@@ -71,17 +72,14 @@
 				 <p:outputLabel  value="Observação" for="obs" />	
 				 <p:inputTextarea id="obs" value="#{veiculoMB.veiculo.obs}" 
 				 rows="10" cols="50" autoResize="false" /> 		
- 			
- 			<p:commandButton value="Visualizar"
-					action="#{veiculoRelatorioMB.getRelatorio()}" ajax="false"
-					onclick="this.form.target='_blank'" />
+
 		         
 				 <p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar}"/>
 				 
 			</p:panelGrid>
 			
 				<hr />
-				 <a href="Relatorio">Clique aqui para visualizar seu relatório</a>
+
 			
 			<h:form>
 			    <p:dataTable value="#{veiculoMB.listaVeiculo}" var="veiculo" rows="10"
@@ -98,7 +96,7 @@
 			        </p:column>
 			 
 			        <p:column headerText="Situação do Veículo">
-			            <h:outputText value="#{veiculo.situacaoVeiculo}" />
+			            <h:outputText value="#{veiculo.situacaoveiculo}" />
 			        </p:column>
 			 
 			        <p:column headerText="Ações">
